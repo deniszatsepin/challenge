@@ -1,0 +1,46 @@
+@import "~bootstrap/less/bootstrap";
+@import "./fontello/css/fontello.css";
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
+
+@light-bg-color: #fff;
+@main-color: #f18713;
+@alert-color: #e30613;
+@screen-xs-max: 640px;
+@screen-sm-min: 641px;
+@brand-primary: #3180ca;
+@brand-warning: @main-color;
+
+body {
+  min-width: 320px;
+}
+
+.container {
+  @media (min-width: @screen-sm-min) {
+    width: 620px;
+  }
+
+  @media (min-width: @screen-md-min) {
+    width: 970px;
+  }
+
+  @media (max-width: @screen-xs-max) {
+    padding: 0;
+  }
+}
+
+.btn-buy {
+  font-size: 24px;
+}
+
+.btn-square {
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 2px;
+}
+
+.btn-remove {
+  background-color: #a7a7a7;
+  color: #fff;
+}

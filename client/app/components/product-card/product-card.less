@@ -1,0 +1,244 @@
+@import "../../common/common";
+
+.product-card {
+  position: relative;
+
+  @media (min-width: @screen-sm-min) {
+    border: 2px solid @main-color;
+    border-radius: 5px;
+    padding: 30px 32px 46px;
+  }
+
+  @media (min-width: @screen-md-min) {
+    border: 2px solid @main-color;
+    border-radius: 5px;
+    padding: 10px 40px 27px;
+  }
+
+  &__top-seller {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 106px;
+    height: 106px;
+    background: url('../../images/flag--rad.png') 0 0 no-repeat;
+
+    span {
+      position: relative;
+      display: block;
+      top: 25px;
+      left: -14px;
+      transform: rotate(-45deg);
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    &--circle {
+      position: absolute;
+      right: 10%;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: @alert-color;
+
+      span {
+        position: relative;
+        display: block;
+        top: 7px;
+        left: 1px;
+        transform: rotate(-25deg);
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 20px;
+      }
+    }
+  }
+
+  &__header {
+    font-size: 18px;
+    color: @main-color;
+    text-align: center;
+  }
+
+  &__composition {
+    margin: 0 0 10px;
+    vertical-align: bottom;
+    .clearfix();
+
+    @media (max-width: @screen-xs-max) {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+
+  &__features {
+    @media (min-width: @screen-sm-min) {
+      margin: 0 -32px;
+    }
+
+    @media (min-width: @screen-md-min) {
+      margin: 0 -40px;
+    }
+  }
+
+  &__more-details {
+    font-size: 15px;
+    margin: 10px 0;
+    a {
+      color: #2f82c4;
+
+      &:hover {
+        color: #2f82c4;
+      }
+    }
+  }
+
+  &__buy {
+    @media (max-width: @screen-xs-max) {
+      padding: 0 15px;
+    }
+  }
+}
+
+.composition-item {
+  position: relative;
+  display: block;
+  float: left;
+  text-align: center;
+  width: 33.333333%;
+  padding: 0 15px;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  &__icon {
+    height: 115px;
+    position: relative;
+
+    img {
+      max-width: 90%;
+      max-height: 100%;
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+    }
+
+    &:before {
+      content: '';
+      height: 100%;
+      width: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  &__plus {
+    position: absolute;
+    right: -12px;
+    top: 50px;
+    color: @main-color;
+    font-size: 18px;
+  }
+
+  &__name {
+    height: 30px;
+    font-size: 10px;
+  }
+}
+
+.product-feature {
+  text-align: left;
+  padding: 2px 0;
+
+  @media (min-width: @screen-sm-min) {
+    padding: 0 32px;
+  }
+
+  @media (min-width: @screen-md-min) {
+    padding: 0 40px;
+  }
+
+  @media (max-width: @screen-xs-max) {
+    padding: 2px 15px;
+  }
+
+  &__name {
+    color: #000;
+
+    i {
+      color: @main-color;
+    }
+  }
+
+  &__description {
+    color: #000;
+    margin-left: 22px;
+    font-size: 12px;
+  }
+
+  &--highlighted {
+    background-color: @main-color;
+
+    &:first-child {
+      padding-top: 5px;
+    }
+
+    &:last-child {
+      padding-bottom: 5px;
+    }
+
+    .product-feature__name,
+    .product-feature__description {
+        color: #fff;
+      color: #fff;
+
+      i {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.product-price {
+  color: @alert-color;
+
+  &__prefix,
+  &__suffix {
+    font-size: 15px;
+  }
+
+  &__postfix {
+    display: inline-block;
+    width: 42px;
+    position: relative;
+  }
+
+  &__integer,
+  &__currency {
+    font-size: 67px;
+    font-weight: bold;
+  }
+
+  &__separator {
+    position: absolute;
+    left: -4px;
+    bottom: -22px;
+    font-size: 70px;
+    font-weight: bold;
+  }
+
+  &__fraction {
+    position: absolute;
+    bottom: 0px;
+    left: -4px;
+    font-size: 45px;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,63 @@
+<div class="product-card">
+  <div class="product-card__top-seller hidden-xs"
+       ng-if="vm.product.topSeller">
+    <span>Topseller</span>
+  </div>
+  <header class="product-card__header hidden-xs">{{ vm.product.name }}</header>
+  <div class="product-card__composition">
+    <div class="composition-item"
+         ng-repeat="item in vm.product.composition">
+      <div class="composition-item__icon">
+        <img ng-src="{{item.icon}}" />
+      </div>
+      <div class="composition-item__name">
+        <span ng-bind="item.name"></span>
+      </div>
+      <div class="composition-item__plus" ng-if="$index !== vm.product.composition.length - 1">
+        <i class="icon icon-plus"></i>
+      </div>
+    </div>
+  </div>
+  <div class="product-card__features">
+    <div class="product-feature"
+         ng-repeat="feature in vm.product.features"
+         ng-class="{'product-feature--highlighted': feature.highlighted}">
+      <div class="product-feature__name">
+        <i class="icon icon-ok"></i>
+        <span ng-bind="feature.name"></span>
+      </div>
+      <div class="product-feature__description">
+        <span ng-bind="feature.description"></span>
+      </div>
+    </div>
+    <div class="product-card__top-seller--circle visible-xs"
+         ng-if="vm.product.topSeller">
+      <span>Top-seller</span>
+    </div>
+    <div class="product-card__more-details">
+      <a href="#">Mehr Details</a>
+    </div>
+  </div>
+  <div class="product-card__price-info">
+    <div class="product-price">
+      <span class="product-price__prefix">nur</span>
+      <span class="product-price__integer" ng-bind="vm.product.price | price"></span>
+      <span class="product-price__postfix" ng-if="vm.product.price | price: true">
+        <span class="product-price__separator">,</span>
+        <span class="product-price__fraction" ng-bind="vm.product.price | price: true"></span>
+      </span>
+      <span class="product-price__currency">€</span>
+      <span class="product-price__suffix" ng-if="vm.product.priceType">
+        im Monat<sup>1</sup>
+      </span>
+      <span class="product-price__suffix" ng-if="!vm.product.priceType">
+        einmalig
+      </span>
+    </div>
+  </div>
+  <div class="product-card__buy">
+    <button class="btn btn-block btn-primary btn-buy" ng-click="vm.addToCart()">
+      Add to cart
+    </button>
+  </div>
+</div>

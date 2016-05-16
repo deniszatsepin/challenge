@@ -1,0 +1,22 @@
+<div class="product-list">
+  <div class="visible-xs product-list__tabs row">
+    <div class="product-list-tab col-xs-6"
+         ng-repeat="product in vm.products track by product.id">
+      <div class="product-list-tab__internals"
+           ng-class="{'product-list-tab__internals--active': vm.activeTab === product.id}"
+           ng-click="vm.activeTab = product.id">
+        <div class="product-list-tab__name">
+          <span ng-bind="product.name"></span>
+        </div>
+        <div class="product-list-tab__price">
+          <span ng-bind="product.price"></span>€
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12 product-list__item"
+       ng-repeat="product in vm.products track by product.id"
+       ng-class="{'product-list__item--active': vm.activeTab === product.id}">
+    <product-card product="product"></product-card>
+  </div>
+</div>

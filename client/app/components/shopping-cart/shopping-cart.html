@@ -1,0 +1,79 @@
+<div class="shopping-cart">
+  <div class="shopping-cart__header hidden-xs" ng-if="vm.items.length">
+    <div class="shopping-cart-header">
+      <div class="shopping-cart-header__name">Artikel</div>
+      <div class="shopping-cart-header__details hidden-xs hidden-sm">Details</div>
+      <div class="shopping-cart-header__amount">Anzahl</div>
+      <div class="shopping-cart-header__price">Preis</div>
+    </div>
+  </div>
+  <div class="shopping-cart__body">
+    <div class="shopping-cart-item"
+         ng-repeat="item in vm.items">
+      <div class="shopping-cart-item__name">
+        <img ng-src="{{item.product.icon}}" />
+        <div class="shopping-cart-item__info">
+          <div ng-bind="item.product.name"></div>
+          <div ng-bind="item.product.details" class="visible-xs visible-sm"></div>
+        </div>
+      </div>
+      <div class="shopping-cart-item__details hidden-xs hidden-sm">
+        <span ng-bind="item.product.details"></span>
+      </div>
+      <div class="shopping-cart-item__amount">
+        <select class="hidden-xs form-control" ng-model="item.amount" ng-options="o for o in vm.range"></select>
+        <div class="amount-control visible-xs">
+          <button class="btn btn-primary btn-sm btn-square" ng-click="vm.removeOne(item)">
+            <i class="icon icon-minus"></i>
+          </button>
+          <div class="amount-control__digit" ng-bind="item.amount"></div>
+          <button class="btn btn-primary btn-sm btn-square" ng-click="vm.addOne(item)">
+            <i class="icon icon-plus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="shopping-cart-item__price">
+        <span ng-bind="item.totalPrice | number: 2"></span>€
+        <span ng-if="item.product.priceType">/ mtl.</span>
+      </div>
+      <div class="shopping-cart-item__remove">
+        <button class="btn btn-sm btn-square btn-remove" ng-click="vm.removeItem(item)">
+          <i class="icon icon-cancel"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="shopping-cart__coupon" ng-if="vm.items.length">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Coupon Code" />
+      <span class="input-group-btn">
+        <button class="btn btn-warning">Einlösen</button>
+      </span>
+    </div>
+  </div>
+  <div class="shopping-cart__summary" ng-if="vm.items.length">
+    <div class="cart-summary__item cart-summary__once">
+      <div class="cart-summary__left">Einmalige Kosten</div>
+      <div class="cart-summary__right">
+        <span ng-bind="vm.getOnce() | number: 2"></span>
+      </div>
+    </div>
+    <div class="cart-summary__item cart-summary__monthly">
+      <div class="cart-summary__left">Monatliche Kosten</div>
+      <div class="cart-summary__right">
+        <span ng-bind="vm.getMonthly() | number: 2"></span>
+      </div>
+    </div>
+    <div class="cart-summary__item cart-summary__total">
+      <div class="cart-summary__left">Gesamtsumme</div>
+      <div class="cart-summary__right">
+        <span ng-bind="vm.getTotal() | number: 2"></span>€
+      </div>
+    </div>
+    <div class="shopping-cart__button" ng-if="vm.items.length">
+      <button class="btn btn-primary btn-block btn-buy">
+        Zur Kasse gehen <i class="glyphicon glyphicon-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
